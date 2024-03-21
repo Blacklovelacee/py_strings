@@ -1,35 +1,18 @@
 def reverse(text: str) -> str:
-    """
-    Return the 'text' backwards.
-
-    Parameters
-    ----------
-    text: str
-        The input string
-
-    Returns
-    -------
-    str
-        The text written backwards.
-    """
-    pass
+    return text[::-1]
 
 
 def first_to_upper(text: str) -> str:
-    """
-    Changes each first character of the word to uppercase.
+   s = ''
+   s += text[0].upper()
+   if len(text) > 0:
+	   for i in range(1, len(text)):
+   		if(text[i - 1] == ' '):
+   			s += text[i].upper()
+   		else:
+   			s += text[i] 
 
-    Parameters
-    ----------
-    text: str
-        The input string
-
-    Returns
-    -------
-    str
-        The modified text
-    """
-    pass
+   return s 
 
 
 def count_vowels(text: str) -> int:
