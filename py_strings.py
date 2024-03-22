@@ -1,3 +1,5 @@
+import re
+
 def reverse(text: str) -> str:
     return text[::-1]
 
@@ -16,51 +18,18 @@ def first_to_upper(text: str) -> str:
 
 
 def count_vowels(text: str) -> int:
-    """
-    Counts number of vovels in the text.
-
-    Parameters
-    ----------
-    text: str
-        The input string
-
-    Returns
-    -------
-    inp
-        Number of vowels.
-    """
-    pass
-
+    return len(re.findall(r'[A, a, E, e, Y, y, U, u, I, i, O, o]', text))
 
 def sum_digits(text: str) -> int:
-    """
-    Finds all digitts in the text and returns its sum.
-
-    Parameters
-    ----------
-    text: str
-        The input string
-
-    Returns
-    -------
-    int
-        Sum of all digits in the text.
-    """
-    pass
+    s = 0
+    for i in re.findall(r'[1-9]', text):
+    	s += int(i)
+    
+    return s
 
 
 def search_substr(text: str, sub: str) -> int:
-    """
-    Search for sub(string) in the text. Returns the position or None.
-
-    Parameters
-    ----------
-    text: str
-        The input string
-
-    Returns
-    -------
-    int or None
-        Position of the sub(string) or None.
-    """
-    pass
+    if text.find(sub) == -1:
+    	return None
+    else:
+    	return text.find(sub)
