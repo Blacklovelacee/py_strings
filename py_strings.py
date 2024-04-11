@@ -1,3 +1,5 @@
+# pylint: disable=C0114
+
 import re
 
 def reverse(text: str) -> str:
