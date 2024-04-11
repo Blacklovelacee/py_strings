@@ -1,6 +1,8 @@
 # pylint: disable=C0114
 
 import re
+import string
+
 
 def reverse(text: str) -> str:
     """
@@ -34,18 +36,14 @@ def first_to_upper(text: str) -> str:
         The modified text
     """
     s = ''
-    s += text[0].upper()
-    lib = {',', '.', ';', ':', ' ', '\n', '\t', '-'}
     if len(text) > 0:
-      for i in range(1, len(text)):
-         k = 0
-         for sign in lib:
-             if(text[i - 1] == sign):
+        s += text[0].upper()
+        for i in range(1, len(text)):
+            if text[i - 1] in string.punctuation \
+            or text[i - 1] in string.whitespace:
                 s += text[i].upper()
-                k = 1
-                break
-         if k == 0:  
-             s += text[i]
+            else:
+                s += text[i]
 
     return s
 
@@ -80,11 +78,7 @@ def sum_digits(text: str) -> int:
     int
         Sum of all digits in the text.
     """
-    s = 0
-    for i in re.findall(r'[1-9]', text):
-       s += int(i)
-    
-    return s
+    return sum(map(int, re.findall(r'[1-9]', text)))
 
 
 def search_substr(text: str, sub: str) -> int:
@@ -102,5 +96,5 @@ def search_substr(text: str, sub: str) -> int:
         Position of the sub(string) or None.
     """
     if text.find(sub) == -1:
-       return None
+        return None
     return text.find(sub)
